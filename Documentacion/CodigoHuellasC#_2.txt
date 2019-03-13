@@ -1,0 +1,288 @@
+namespace Enrollment
+{
+  
+public partial class CaptureForm : Form, DPFP.Capture.EventHandler
+	{
+		public CaptureForm()
+		{
+			InitializeComponent();
+            llenacombobox();
+           llenacombobox2();
+           
+ 
+		}
+ 
+		protected virtual void Init()
+		{
+            try
+            {
+                Capturer = new DPFP.Capture.Capture();				// Crear una operación de captura.
+ 
+                if ( null != Capturer )
+                    Capturer.EventHandler = this;					// Suscríbete para capturar eventos.
+                else
+                    SetPrompt("No se puede iniciar la operación de captura!");
+            }
+            catch
+            {
+                MessageBox.Show("No se puede iniciar la operación de captura!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);            
+            }
+		}
+ 
+		protected virtual void Process(DPFP.Sample Sample)
+		{
+            // La imagen muestra la huella digital Draw.
+			DrawPicture(ConvertSampleToBitmap(Sample));
+		}
+ 
+		protected void Start()
+		{
+            if (null != Capturer)
+            {
+                try
+                {
+                    Capturer.StartCapture();
+                    SetPrompt("Escanear su huella digital.");
+                }
+                catch
+                {
+                    SetPrompt("No se puede iniciar la captura!");
+                }
+            }
+		}
+ 
+		protected void Stop()
+		{
+            if (null != Capturer)
+            {
+                try
+                {
+                    Capturer.StopCapture();
+                }
+                catch
+                {
+                    SetPrompt("No se puede poner fin a la captura!");
+                }
+            }
+		}
+		
+	#region Form Event Handlers:
+ 
+		private void CaptureForm_Load(object sender, EventArgs e)
+		{
+			Init();
+            Start();												// Inicie la operación de captura
+		}
+ 
+		private void CaptureForm_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			Stop();
+		}
+	#endregion
+ 
+	#region EventHandler Members:
+ 
+		public void OnComplete(object Capture, string ReaderSerialNumber, DPFP.Sample Sample)
+		{
+            MakeReport("huella Digital Capturada");
+            SetPrompt("Intentelo Otra Vez");
+			Process(Sample);
+		}
+ 
+		public void OnFingerGone(object Capture, string ReaderSerialNumber)
+		{
+           //MakeReport("El dedo se retira del lector de huellas");
+		}
+ 
+        public void OnFingerTouch(object Capture, string ReaderSerialNumber)
+        {
+          //  MakeReport("El lector de huellas dactilares fue tocado.");
+        }
+ 
+		public void OnReaderConnect(object Capture, string ReaderSerialNumber)
+		{
+            MakeReport("Lector de Huellas Conectado");
+		}
+ 
+		public void OnReaderDisconnect(object Capture, string ReaderSerialNumber)
+		{
+            MakeReport("El lector de huellas dactilares se desconectó.");
+		}
+ 
+		public void OnSampleQuality(object Capture, string ReaderSerialNumber, DPFP.Capture.CaptureFeedback CaptureFeedback)
+		{
+			if (CaptureFeedback == DPFP.Capture.CaptureFeedback.Good)
+                MakeReport("La calidad de la muestra de la huella digital es buena.");
+			else
+                MakeReport("La calidad de la muestra de la huella digital es pobre.");
+		}
+	#endregion
+ 
+		protected Bitmap ConvertSampleToBitmap(DPFP.Sample Sample)
+		{
+            DPFP.Capture.SampleConversion Convertor = new DPFP.Capture.SampleConversion();	// Crear un conversor de muestra.
+            Bitmap bitmap = null;												            // TODO: el tamaño no importa
+            Convertor.ConvertToPicture(Sample, ref bitmap);									// TODO: regresar mapa de bits como resultado
+			return bitmap;
+		}
+ 
+		protected DPFP.FeatureSet ExtractFeatures(DPFP.Sample Sample, DPFP.Processing.DataPurpose Purpose)
+		{
+            DPFP.Processing.FeatureExtraction Extractor = new DPFP.Processing.FeatureExtraction();	// Crear un extractor de característicasBytes = {byte[0x000432b4]}
+			DPFP.Capture.CaptureFeedback feedback = DPFP.Capture.CaptureFeedback.None;
+			DPFP.FeatureSet features = new DPFP.FeatureSet();
+            Extractor.CreateFeatureSet(Sample, Purpose, ref feedback, ref features);			// TODO: Características del retorno como resultado?
+			if (feedback == DPFP.Capture.CaptureFeedback.Good)
+				return features;
+			else
+				return null;
+		}
+ 
+		protected void SetStatus(string status)
+		{
+			this.Invoke(new Function(delegate() {
+				StatusLine.Text = status;
+			}));
+		}
+ 
+		protected void SetPrompt(string prompt)
+		{
+			this.Invoke(new Function(delegate() {
+				//Prompt.Text = prompt;
+			}));
+		}
+		protected void MakeReport(string message)
+		{
+			this.Invoke(new Function(delegate() {
+				StatusText.AppendText(message + "\r\n");
+			}));
+		}
+ 
+		private void DrawPicture(Bitmap bitmap)
+		{
+			this.Invoke(new Function(delegate() {
+                Picture.Image = new Bitmap(bitmap, Picture.Size);	// ajustar la imagen en el cuadro de imagen
+			}));
+		}
+ 
+		private DPFP.Capture.Capture Capturer;
+ 
+        public void llenacombobox()
+        {
+ 
+            SqlConnection conexion = new SqlConnection();
+            conexion.ConnectionString = (@"Data Source=PC2703;Initial Catalog=Pos_Restaruantes;User ID=sa;Password=Gala123456");
+            DataSet ds = new DataSet();
+            SqlDataAdapter da = new SqlDataAdapter("SELECT Id_Tipo_Acceso, Tipo_Acceso FROM Cap_Tipo_Acceso", conexion);
+            da.Fill(ds, "Cap_Tipo_Acceso");
+            comboBox1.DataSource = ds.Tables[0].DefaultView;
+            comboBox1.DisplayMember = "Tipo_Acceso";
+            comboBox1.ValueMember = "Id_Tipo_Acceso";
+            
+ 
+            
+        }
+      
+        public void llenacombobox2()
+        {
+            SqlConnection conexion = new SqlConnection();
+            conexion.ConnectionString = (@"Data Source=PC2703;Initial Catalog=Pos_Restaruantes;User ID=sa;Password=Gala123456");
+            DataSet ds = new DataSet();
+            SqlDataAdapter da = new SqlDataAdapter("SELECT Cod_Restaurante FROM Cat_Restaurantes", conexion);
+            da.Fill(ds, "Cat_Restaurantes");
+            comboBox2.DataSource = ds.Tables[0].DefaultView;
+            comboBox2.ValueMember = "Cod_Restaurante";
+        }
+ 
+       
+ 
+	}
+}
+Formulario donde Guardo la huella 
+
+namespace Enrollment
+{
+	delegate void Function();	// a simple delegate for marshalling calls from event handlers to the GUI thread
+ 
+	public partial class MainForm : Form
+	{
+		public MainForm()
+		{
+			InitializeComponent();
+		}
+ 
+		private void CloseButton_Click(object sender, EventArgs e)
+		{
+			Close();
+		}
+ 
+		private void EnrollButton_Click(object sender, EventArgs e)
+		{
+			EnrollmentForm Enroller = new EnrollmentForm();
+			Enroller.OnTemplate += this.OnTemplate;
+			Enroller.ShowDialog();
+		}
+ 
+		private void VerifyButton_Click(object sender, EventArgs e)
+		{
+			VerificationForm Verifier = new VerificationForm();
+			Verifier.Verify(Template);
+		}
+ 
+		private void SaveButton_Click(object sender, EventArgs e)
+        {
+          
+        }   
+ 
+		private void LoadButton_Click(object sender, EventArgs e)
+		{
+			OpenFileDialog open = new OpenFileDialog();
+			open.Filter = "Fingerprint Template File (*.fpt)|*.fpt";
+			if (open.ShowDialog() == DialogResult.OK) {
+				using (FileStream fs = File.OpenRead(open.FileName)) {
+					DPFP.Template template = new DPFP.Template(fs);
+					OnTemplate(template);
+				}
+			}
+		}
+ 
+       
+		private void OnTemplate(DPFP.Template template)
+		{
+			this.Invoke(new Function(delegate()
+			{
+				Template = template;
+               
+                
+				VerifyButton.Enabled = SaveButton.Enabled = (Template != null);
+				if (Template != null)
+                    MessageBox.Show("La plantilla de huellas dactilares está preparado para la verificación de huellas dactilares.", "Fingerprint Enrollment");
+				else
+					MessageBox.Show("The fingerprint template is not valid. Repeat fingerprint enrollment.", "Fingerprint Enrollment");
+			}));
+            MemoryStream fingerprintData = new MemoryStream();
+            Template.Serialize(fingerprintData);
+            fingerprintData.Position = 0;
+            BinaryReader br = new BinaryReader(fingerprintData);
+            Byte[] bytes = br.ReadBytes((Int32)fingerprintData.Length);
+ 
+            //Insert the file into database
+            SqlConnection cn = new SqlConnection("Data Source=PC2703;Initial Catalog=Pos_Restaruantes;User ID=sa;Password=Gala123456");
+           
+            SqlCommand cmd = new SqlCommand("INSERT INTO Cat_Usuarios VALUES(@Cod_Biometrico, @Nombre_Usuario)", cn);
+        
+            cmd.Parameters.Add("Cod_Biometrico", SqlDbType.Image).Value = bytes;
+            cmd.Parameters.Add("Nombre_Usuario", SqlDbType.NVarChar).Value = TxtNombre.Text;
+            
+ 
+            cn.Open();
+            cmd.ExecuteNonQuery();
+            cn.Close();
+            
+        }
+ 
+		private DPFP.Template Template;
+ 
+      
+	}
+}

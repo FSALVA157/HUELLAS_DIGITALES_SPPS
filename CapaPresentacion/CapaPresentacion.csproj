@@ -1,0 +1,475 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2CD479C1-AC0A-445F-9123-725F45FB776F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CapaPresentacion</RootNamespace>
+    <AssemblyName>CapaPresentacion</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DPFPDevNET, Version=1.6.1.0, Culture=neutral, PublicKeyToken=696774c42ee28c57, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\DigitalPersona\One Touch SDK\.NET\Bin\DPFPDevNET.dll</HintPath>
+    </Reference>
+    <Reference Include="DPFPEngNET, Version=1.6.1.0, Culture=neutral, PublicKeyToken=7fe76e7adf19964b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\DigitalPersona\One Touch SDK\.NET\Bin\DPFPEngNET.dll</HintPath>
+    </Reference>
+    <Reference Include="DPFPGuiNET, Version=1.6.1.0, Culture=neutral, PublicKeyToken=d4f4a0bd9c559145, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\DigitalPersona\One Touch SDK\.NET\Bin\DPFPGuiNET.dll</HintPath>
+    </Reference>
+    <Reference Include="DPFPShrNET, Version=1.6.1.0, Culture=neutral, PublicKeyToken=d902fe275a8d6cf2, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\DigitalPersona\One Touch SDK\.NET\Bin\DPFPShrNET.dll</HintPath>
+    </Reference>
+    <Reference Include="DPFPVerNET, Version=1.6.1.0, Culture=neutral, PublicKeyToken=4de0a9c4dcc83984, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\DigitalPersona\One Touch SDK\.NET\Bin\DPFPVerNET.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="frmBusqueda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBusqueda.Designer.cs">
+      <DependentUpon>frmBusqueda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCargarHuella.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCargarHuella.Designer.cs">
+      <DependentUpon>frmCargarHuella.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCargarHuella2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCargarHuella2.Designer.cs">
+      <DependentUpon>frmCargarHuella2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCiudadano.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCiudadano.Designer.cs">
+      <DependentUpon>frmCiudadano.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEnrolar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEnrolar.Designer.cs">
+      <DependentUpon>frmEnrolar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEnrolarCivil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEnrolarCivil.Designer.cs">
+      <DependentUpon>frmEnrolarCivil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEnrolarPersonal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEnrolarPersonal.Designer.cs">
+      <DependentUpon>frmEnrolarPersonal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmInterno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInterno.Designer.cs">
+      <DependentUpon>frmInterno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMensaExito.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMensaExito.Designer.cs">
+      <DependentUpon>frmMensaExito.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMensajeNoRegistro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMensajeNoRegistro.Designer.cs">
+      <DependentUpon>frmMensajeNoRegistro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPersonal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPersonal.Designer.cs">
+      <DependentUpon>frmPersonal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrincipal.Designer.cs">
+      <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CapaNegocio\CapaNegocio.csproj">
+      <Project>{31e31dc9-81db-4a91-877a-18549e0ae928}</Project>
+      <Name>CapaNegocio</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmBusqueda.resx">
+      <DependentUpon>frmBusqueda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCargarHuella.resx">
+      <DependentUpon>frmCargarHuella.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCargarHuella2.resx">
+      <DependentUpon>frmCargarHuella2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCiudadano.resx">
+      <DependentUpon>frmCiudadano.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEnrolar.resx">
+      <DependentUpon>frmEnrolar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEnrolarCivil.resx">
+      <DependentUpon>frmEnrolarCivil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEnrolarPersonal.resx">
+      <DependentUpon>frmEnrolarPersonal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInterno.resx">
+      <DependentUpon>frmInterno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMensaExito.resx">
+      <DependentUpon>frmMensaExito.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMensajeNoRegistro.resx">
+      <DependentUpon>frmMensajeNoRegistro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPersonal.resx">
+      <DependentUpon>frmPersonal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrincipal.resx">
+      <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Resources\Dos_Manos_1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Fingerprint-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\silueta.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fondo_1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fondo_3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fondo_4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\perfil.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\silueta_negra.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\guardar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\borrar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\interno_imagen_2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\persona_imagen_azul.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\personal_imagen_morado.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\preso.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\captura_huellas_fondo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\huella1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\huella2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\huella11.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FreeVector-Vector-Fingerprint.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\manos_1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\manos_2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\huella_identificar_6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\huella_scaneo_8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\No_Registrado_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\No_Registrado_1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\No_Registrado_21.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Fondo_Militar.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fondo_SPPS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ciudadano_fondo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EscudoPenitenciario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tira_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\militar_6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ciudadanos_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hombre_icono.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\personas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ciudadanos_21.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\oac_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hombre_gente.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\persona_imagen_rojo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\OAC_logo_Nuevo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gente.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\interno_imagen.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Identificar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dos_Manos_3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dos_Manos_2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\manos_lila.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Carga_Datos_Gris.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Carga_Datos_Amarillo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\manos_rojas_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\manos_rojas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Guardia_Interna_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\personal_naranja.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\spps-logo dorado.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cerrar_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\maximizar_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Menu_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Menu_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minimizar_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\restaurar_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cerrar_gris.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cerrar_azul_claro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cerrar_azul_claro1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minimizar_azul_claro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\restaurar_azul_claro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\restaurar_azul_claro2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\maximizar_azul_claro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\judiciales_64_x_64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ciudadanos_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ciudadanos_31.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\oac_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gente2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gente_64X64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gorra_64X64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cerrar_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cerrar_11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\preso_64X64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\interno_imagen_21.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\preso2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\preso_icono.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\titulo_fond.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\huella_Gris.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fondo_animado.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fondo_mapa.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fondo_41.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fondo_5.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ok_Icono.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ok_icono_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ok_icono_41.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
