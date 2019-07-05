@@ -444,26 +444,52 @@ namespace CapaPresentacion
                */
                //proceso de convertir el archivo en una tipo sample
                 System.IO.MemoryStream ms1 = new MemoryStream();
+                System.Drawing.Image imageIn;
                 Stream flujo = ofd1.OpenFile();
-                //System.Drawing.Bitmap bmpPostedImage = new System.Drawing.Bitmap(flujo);
-                Image imagen = new Bitmap(flujo);
+
+                heightfieldBitmap = new Image();
+                heightfieldBitmap.Height = Form1.currentWorld.CurrentMap.TerrainHeightfield.Size * PixelScale;
+                heightfieldBitmap.Width = heightfieldBitmap.Height;
+                heightfieldBitmap.HorizontalAlignment = HorizontalAlignment.Left;
+                heightfieldBitmap.VerticalAlignment = VerticalAlignment.Top;
+                var bmp = EGE.Resources.textureToBitmap(Form1.currentWorld.CurrentMap.TerrainHeightfield.TextureName);
+                bmp.RotateFlip(System.Drawing.RotateFlipType.Rotate90FlipNone);
+                System.Drawing.ImageConverter converter = new System.Drawing.ImageConverter();
+                BitmapImage bmpi = new BitmapImage();
+                bmpi.BeginInit();
+                bmpi.StreamSource = new MemoryStream((byte[])converter.ConvertTo(bmp, typeof(byte[])));
+                bmpi.EndInit();
+                heightfieldBitmap.Source = bmpi;
+                map.Children.Add(heightfieldBitmap);
+
+                #region codigoInservible
+                /*
+                flujo.CopyTo(ms1);
+                imageIn = System.Drawing.Image.FromStream(ms1);
+
+                // System.Drawing.Bitmap bmpPostedImage = new System.Drawing.Bitmap(flujo);
+                
+                imageIn.Save(ms1, System.Drawing.Imaging.ImageFormat.Bmp);
+                
                 var obj = new ImageConverter();
 
                 // byte[] imageByteArray = obj.con  obj.ConvertImageToByteArray(bmpPostedImage, ".png");
                 //System.Drawing.Image imageIn = obj.ConvertByteArrayToImage(imageByteArray);
 
                // Image imagen = (Image)obj.ConvertTo(bmpPostedImage,typeof(Image));
-                byte[] imageBytes = (byte[])obj.ConvertTo(imagen, typeof(byte[]));
+                byte[] imageBytes = (byte[])obj.ConvertTo(ms1, typeof(byte[]));
 
                 //imageIn.Save(ms1, System.Drawing.Imaging.ImageFormat.Bmp);
 
 
                 //MessageBox.Show(ofd1.ToString());
                 //flujo.CopyTo(ms1);
+                */
+                #endregion codigoInservible
+
 
                 System.IO.MemoryStream ms = new MemoryStream(imageBytes);
                 
-
                 DPFP.Sample sampleCrudo = new DPFP.Sample(ms);
                 this.Process(sampleCrudo);
                 string texto = this.lblPersonalCode.Text + this.lblD.Text + this.lblNombre.Text;

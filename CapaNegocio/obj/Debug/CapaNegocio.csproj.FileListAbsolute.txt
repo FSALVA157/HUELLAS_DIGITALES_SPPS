@@ -19,3 +19,10 @@ D:\GITHUB_PROYECTOS_EN_CURSO\Proyecto_Huellas_Digitales\CapaNegocio\bin\Debug\Ca
 D:\GITHUB_PROYECTOS_EN_CURSO\Proyecto_Huellas_Digitales\CapaNegocio\obj\Debug\CapaNegocio.csprojResolveAssemblyReference.cache
 D:\GITHUB_PROYECTOS_EN_CURSO\Proyecto_Huellas_Digitales\CapaNegocio\obj\Debug\CapaNegocio.dll
 D:\GITHUB_PROYECTOS_EN_CURSO\Proyecto_Huellas_Digitales\CapaNegocio\obj\Debug\CapaNegocio.pdb
+D:\GITHUB_PROYECTOS_2019\HUELLAS_DIGITALES_SPPS\HUELLAS_DIGITALES_SPPS\CapaNegocio\bin\Debug\CapaNegocio.dll
+D:\GITHUB_PROYECTOS_2019\HUELLAS_DIGITALES_SPPS\HUELLAS_DIGITALES_SPPS\CapaNegocio\bin\Debug\CapaNegocio.pdb
+D:\GITHUB_PROYECTOS_2019\HUELLAS_DIGITALES_SPPS\HUELLAS_DIGITALES_SPPS\CapaNegocio\bin\Debug\CapaDatos.dll
+D:\GITHUB_PROYECTOS_2019\HUELLAS_DIGITALES_SPPS\HUELLAS_DIGITALES_SPPS\CapaNegocio\bin\Debug\CapaDatos.pdb
+D:\GITHUB_PROYECTOS_2019\HUELLAS_DIGITALES_SPPS\HUELLAS_DIGITALES_SPPS\CapaNegocio\obj\Debug\CapaNegocio.csprojResolveAssemblyReference.cache
+D:\GITHUB_PROYECTOS_2019\HUELLAS_DIGITALES_SPPS\HUELLAS_DIGITALES_SPPS\CapaNegocio\obj\Debug\CapaNegocio.dll
+D:\GITHUB_PROYECTOS_2019\HUELLAS_DIGITALES_SPPS\HUELLAS_DIGITALES_SPPS\CapaNegocio\obj\Debug\CapaNegocio.pdb

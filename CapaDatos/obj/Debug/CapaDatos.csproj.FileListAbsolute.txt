@@ -16,3 +16,9 @@ D:\GITHUB_PROYECTOS_EN_CURSO\Proyecto_Huellas_Digitales\CapaDatos\bin\Debug\Capa
 D:\GITHUB_PROYECTOS_EN_CURSO\Proyecto_Huellas_Digitales\CapaDatos\obj\Debug\CapaDatos.csprojResolveAssemblyReference.cache
 D:\GITHUB_PROYECTOS_EN_CURSO\Proyecto_Huellas_Digitales\CapaDatos\obj\Debug\CapaDatos.dll
 D:\GITHUB_PROYECTOS_EN_CURSO\Proyecto_Huellas_Digitales\CapaDatos\obj\Debug\CapaDatos.pdb
+D:\GITHUB_PROYECTOS_2019\HUELLAS_DIGITALES_SPPS\HUELLAS_DIGITALES_SPPS\CapaDatos\bin\Debug\CapaDatos.dll.config
+D:\GITHUB_PROYECTOS_2019\HUELLAS_DIGITALES_SPPS\HUELLAS_DIGITALES_SPPS\CapaDatos\bin\Debug\CapaDatos.dll
+D:\GITHUB_PROYECTOS_2019\HUELLAS_DIGITALES_SPPS\HUELLAS_DIGITALES_SPPS\CapaDatos\bin\Debug\CapaDatos.pdb
+D:\GITHUB_PROYECTOS_2019\HUELLAS_DIGITALES_SPPS\HUELLAS_DIGITALES_SPPS\CapaDatos\obj\Debug\CapaDatos.csprojResolveAssemblyReference.cache
+D:\GITHUB_PROYECTOS_2019\HUELLAS_DIGITALES_SPPS\HUELLAS_DIGITALES_SPPS\CapaDatos\obj\Debug\CapaDatos.dll
+D:\GITHUB_PROYECTOS_2019\HUELLAS_DIGITALES_SPPS\HUELLAS_DIGITALES_SPPS\CapaDatos\obj\Debug\CapaDatos.pdb
