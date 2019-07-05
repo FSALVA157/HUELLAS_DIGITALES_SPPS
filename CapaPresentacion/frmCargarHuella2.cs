@@ -424,5 +424,208 @@ namespace CapaPresentacion
             }
 
         }
+
+        private void btnGrabarFile_Click(object sender, EventArgs e)
+        {
+            int dedo = Convert.ToInt32(this.lblDedo.Text);
+            //long clave = Convert.ToInt32(this.lblPersonalCode.Text);
+            string respuesta = "ERROR: Reinicie el Proceso";
+           
+            //LlamarCrearArchivoImagen grabarImagen = new LlamarCrearArchivoImagen(CrearArchivoImagen);
+            try
+            {
+
+                /*
+                MemoryStream ms = new MemoryStream();
+                this.template.Serialize(ms);
+                ms.Position = 0;
+                BinaryReader br = new BinaryReader(ms);
+                Byte[] bytes = br.ReadBytes((Int32)ms.Length);
+               */
+               //proceso de convertir el archivo en una tipo sample
+                System.IO.MemoryStream ms1 = new MemoryStream();
+                Stream flujo = ofd1.OpenFile();
+                //System.Drawing.Bitmap bmpPostedImage = new System.Drawing.Bitmap(flujo);
+                Image imagen = new Bitmap(flujo);
+                var obj = new ImageConverter();
+
+                // byte[] imageByteArray = obj.con  obj.ConvertImageToByteArray(bmpPostedImage, ".png");
+                //System.Drawing.Image imageIn = obj.ConvertByteArrayToImage(imageByteArray);
+
+               // Image imagen = (Image)obj.ConvertTo(bmpPostedImage,typeof(Image));
+                byte[] imageBytes = (byte[])obj.ConvertTo(imagen, typeof(byte[]));
+
+                //imageIn.Save(ms1, System.Drawing.Imaging.ImageFormat.Bmp);
+
+
+                //MessageBox.Show(ofd1.ToString());
+                //flujo.CopyTo(ms1);
+
+                System.IO.MemoryStream ms = new MemoryStream(imageBytes);
+                
+
+                DPFP.Sample sampleCrudo = new DPFP.Sample(ms);
+                this.Process(sampleCrudo);
+                string texto = this.lblPersonalCode.Text + this.lblD.Text + this.lblNombre.Text;
+
+                //trabajar la huella
+                //MemoryStream ms = new MemoryStream();
+                this.template.Serialize(ms);
+                ms.Position = 0;
+                BinaryReader br = new BinaryReader(ms);
+                Byte[] bytes = br.ReadBytes((Int32)ms.Length);
+                
+                foreach (Form frm in Application.OpenForms)
+                {
+                    if (frm.GetType() == typeof(frmEnrolar))
+                    {
+                        long clave = Convert.ToInt32(this.lblPersonalCode.Text);
+                        respuesta = CapaNegocio.NHuellas.Insertar_Huella_Interno(clave, dedo, bytes);
+                        break;
+                    }
+                    if (frm.GetType() == typeof(frmEnrolarCivil))
+                    {
+                        long clave = Convert.ToInt64(this.lblPersonalCode.Text);
+                        respuesta = CapaNegocio.NHuellas.Insertar_Huella_Civil(clave, dedo, bytes);
+                      //  grabarImagen(ConvertirSampleEnBitmap(plantilla), texto);
+                        break;
+                    }
+                    if (frm.GetType() == typeof(frmEnrolarPersonal))
+                    {
+                        int clave = Convert.ToInt32(this.lblPersonalCode.Text);
+                        respuesta = CapaNegocio.NHuellas.Insertar_Huella_Personal(clave, dedo, bytes);
+                        break;
+                    }
+                }
+                //string respuesta = CapaNegocio.NHuellas.Insertar_Huella_Interno(clave, dedo, bytes);
+                //MessageBox.Show(respuesta);
+                if (respuesta.Equals("OK"))
+                {
+                    frmMensaExito exito = new frmMensaExito();
+                    exito.Show();
+
+                }
+                else
+                {
+                    MessageBox.Show(respuesta);
+                }
+
+                #region codigoParaEliminiar
+                /*
+                //proceso de convertir el sample ---> FeatureSet --------> template
+                //********************
+                DPFP.FeatureSet caracteristicas = this.ExtractFeatures(sample, DPFP.Processing.DataPurpose.Enrollment);
+                if (caracteristicas != null)
+                {
+                    try
+                    {
+                        this.enroller.AddFeatures(caracteristicas);
+                    }
+                    catch (Exception ex)
+                    {
+                        SetPrompt("HA FALLADO LA CONVERSION DEL ARCHIVO OBTENIDO DESDE EL LECTOR RODADO");
+                    }
+
+                    finally
+                    {
+                        string numero;
+                        //string nomArchivo = "FERNANDO";
+                        // numero = String.Format("RESTAN {0} LECTURAS DEL DEDO CENSADO", enroller.FeaturesNeeded);
+                        // this.lblVecesDedo.Text = numero.ToString();
+                        switch (enroller.TemplateStatus)
+                        {
+                            case DPFP.Processing.Enrollment.Status.Ready:
+                                MessageBox.Show("IMAGEN DE LECTOR RODADO CAPTURADO CORRECTAMENTE", "SISTEMA DE HUELLAS DIGITALES DEL S.P.P.S", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                this.template = enroller.Template;
+                                //codigo provisorio para prueba de captura de imagen
+
+                                //nomArchivo = Convert.ToString(datos["clave_personal"]) + Convert.ToString(datos["clave_automatica"]);
+                                // CrearArchivoImagen(this.ConvertirSampleEnBitmap(Sample), nomArchivo);
+
+
+
+                                Stop();
+                                break;
+                            case DPFP.Processing.Enrollment.Status.Failed:
+                                MessageBox.Show("ERROR EN EL RECONOCIMIENTO DE LA IMAGEN DE LECTOR RODADO", "SISTEMA DE HUELLAS DIGITALES DEL S.P.P.S", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                this.imgHuella.Image = null;
+                                enroller.Clear();
+                                Stop();
+                                Start();
+                                break;
+
+                        }
+                    }
+                }
+
+
+
+                //*****************
+                //codigo de insercion del dato
+
+             //   MemoryStream ms = new MemoryStream();
+                this.template.Serialize(ms);
+                ms.Position = 0;
+                BinaryReader br = new BinaryReader(ms);
+                Byte[] bytes = br.ReadBytes((Int32)ms.Length);
+
+
+                foreach (Form frm in Application.OpenForms)
+                {
+                    if (frm.GetType() == typeof(frmEnrolar))
+                    {
+                        long clave = Convert.ToInt32(this.lblPersonalCode.Text);
+                        respuesta = CapaNegocio.NHuellas.Insertar_Huella_Interno(clave, dedo, bytes);
+                        break;
+                    }
+                    if (frm.GetType() == typeof(frmEnrolarCivil))
+                    {
+                        long clave = Convert.ToInt64(this.lblPersonalCode.Text);
+                        respuesta = CapaNegocio.NHuellas.Insertar_Huella_Civil(clave, dedo, bytes);
+                        //grabarImagen(ConvertirSampleEnBitmap(plantilla), texto);
+                        break;
+                    }
+                    if (frm.GetType() == typeof(frmEnrolarPersonal))
+                    {
+                        int clave = Convert.ToInt32(this.lblPersonalCode.Text);
+                        respuesta = CapaNegocio.NHuellas.Insertar_Huella_Personal(clave, dedo, bytes);
+                        break;
+                    }
+                }
+               
+                if (respuesta.Equals("OK"))
+                {
+                    frmMensaExito exito = new frmMensaExito();
+                    exito.Show();
+
+                }
+                else
+                {
+                    MessageBox.Show(respuesta);
+                }
+                */
+                #endregion codigoParaEliminar
+
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void btnAbrirArchivo_Click(object sender, EventArgs e)
+        {
+            ofd1.InitialDirectory = "D:\\ProyectoHuellasRodadas2019\\huellas_muestra";
+            ofd1.FilterIndex = 1;
+            ofd1.RestoreDirectory = true;
+            if (ofd1.ShowDialog() == DialogResult.OK)
+            {
+                this.txtArch1huellaName.Text = ofd1.FileName;
+            }
+
+        }
     }
 }
