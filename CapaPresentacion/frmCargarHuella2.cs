@@ -427,6 +427,7 @@ namespace CapaPresentacion
 
         private void btnGrabarFile_Click(object sender, EventArgs e)
         {
+
             int dedo = Convert.ToInt32(this.lblDedo.Text);
             //long clave = Convert.ToInt32(this.lblPersonalCode.Text);
             string respuesta = "ERROR: Reinicie el Proceso";
@@ -446,6 +447,8 @@ namespace CapaPresentacion
                 System.IO.MemoryStream ms1 = new MemoryStream();
                 System.Drawing.Image imageIn;
                 Stream flujo = ofd1.OpenFile();
+                //codigo inservible porque el lecto no captura image
+                /*
 
                 heightfieldBitmap = new Image();
                 heightfieldBitmap.Height = Form1.currentWorld.CurrentMap.TerrainHeightfield.Size * PixelScale;
@@ -461,7 +464,7 @@ namespace CapaPresentacion
                 bmpi.EndInit();
                 heightfieldBitmap.Source = bmpi;
                 map.Children.Add(heightfieldBitmap);
-
+                */
                 #region codigoInservible
                 /*
                 flujo.CopyTo(ms1);
@@ -488,14 +491,15 @@ namespace CapaPresentacion
                 #endregion codigoInservible
 
 
-                System.IO.MemoryStream ms = new MemoryStream(imageBytes);
-                
+                //System.IO.MemoryStream ms = new MemoryStream(imageBytes);
+                /*
                 DPFP.Sample sampleCrudo = new DPFP.Sample(ms);
                 this.Process(sampleCrudo);
                 string texto = this.lblPersonalCode.Text + this.lblD.Text + this.lblNombre.Text;
 
                 //trabajar la huella
                 //MemoryStream ms = new MemoryStream();
+                
                 this.template.Serialize(ms);
                 ms.Position = 0;
                 BinaryReader br = new BinaryReader(ms);
@@ -525,6 +529,7 @@ namespace CapaPresentacion
                 }
                 //string respuesta = CapaNegocio.NHuellas.Insertar_Huella_Interno(clave, dedo, bytes);
                 //MessageBox.Show(respuesta);
+                */
                 if (respuesta.Equals("OK"))
                 {
                     frmMensaExito exito = new frmMensaExito();
